@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Couch Potato - Recipe Search</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Acme&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="javascript.js"></script>
+    <script src="couchpotato.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="sale" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content" id="data">
+
+            </div>
+            <button id="close" type="button" class="btn btn-secondary" dismiss="modal">Close</button>
+        </div>
+    </div>
+    <div class="pos-f-t">
+        <nav class="navbar navbar-dark" style="background-color:#4d1e00">
+            <a href="dashboard.html">
+                <h2 id="nav-title">Couch Potato</h2>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </nav>
+        <div class="collapse" id="navbarToggleExternalContent">
+            <div class="p-3 menu-links" style="background-color:#4d1e00">
+                <span class="text-muted">
+                  <a class="nav-link" href="profile.html">Profile</a>
+                  <hr>
+                  <a id ="logout" class="nav-link" href="index.html">Log Out</a>
+              </span>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <div class="container">
+        <div class="storage">
+            <form>
+                <h3>Search For A Recipe</h3>
+                <br>
+                <div class="form-group">
+                    <label for="ingredient_input"><b>The Main Ingredient</b></label>
+                    <input type="text" class="form-control" id="main_ingredient" aria-describedby="ingredient" placeholder="example pork">
+
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="ingredient_input"><b>Ingredients That Should Be Excluded</b></label>
+                    <input type="text" class="form-control" id="exceptions" aria-describedby="ingredient" placeholder="example salt, pepper, garlic">
+
+                </div>
+                <br>
+                <div class="form-row align-items-center">
+                    <div class="col-auto my-1">
+                        <label class="mr-sm-2" for="inlineFormCustomSelect"><b>Diet Types</b></label>
+                        <select class="custom-select mr-sm-2" id="diet_type">
+                    <option value="" disabled selected>Select a Diet</option>
+                    <option value="balanced">Balanced</option>
+                    <option value="high-protein">High Protein</option>
+                    <option value="high-fiber">High Fiber</option>
+                    <option value="low-fat">Low Fat</option>
+                    <option value="low-carb">Low Carb</option>
+                    <option value="low-sodium">Low Sodium</option>
+                </select>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="vegan" id="health_type1">
+                        <label class="form-check-label" for="defaultCheck1">Vegan</label>
+
+                        <input class="form-check-input" type="checkbox" value="vegetarian" id="health_type2">
+                        <label class="form-check-label" for="defaultCheck2">Vegetarian</label>
+
+                        <input class="form-check-input" type="checkbox" value="peanut-free" id="health_type3">
+                        <label class="form-check-label" for="defaultCheck2">Peanut Free</label>
+
+                        <input class="form-check-input" type="checkbox" value="tree-nut-free" id="health_type4">
+                        <label class="form-check-label" for="defaultCheck2">Tree Nut</label>
+                        <br>
+                        <input class="form-check-input" type="checkbox" value="sugar-conscious" id="health_type5">
+                        <label class="form-check-label" for="defaultCheck2">Sugar Conscious</label>
+
+                        <input class="form-check-input" type="checkbox" value="alcohol-free" id="health_type6">
+                        <label class="form-check-label" for="defaultCheck2">Alcohol Free</label>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <button id="user_search" type="submit">Find Some Recipes</button>
+            </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+
+</html>
